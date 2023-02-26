@@ -3,19 +3,22 @@
   <title>OpenAI Quickstart</title>
   <link
     rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
+    href="{{ url_for('static', filename='flippedtriangle.png') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
+  <img src="{{ url_for('static', filename='flippedtriangle.png') }}" class="icon" />
+  <h3>三角企划</h3>
+  <h6>一键生成旅游攻略，做你的旅行管家</h6>
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+    <input type="text" name="animal" placeholder="输入目的地以及任意需求" required />
+    <input type="submit" value="生成" />
   </form>
   {% if result %}
-  <div class="result">{{ result }}</div>
+  <div class="result">
+    {{ result }}
+  </div>
   {% endif %}
 </body>

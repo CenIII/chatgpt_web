@@ -15,6 +15,7 @@ def index():
             model="text-davinci-003",
             prompt=generate_prompt(animal),
             temperature=0.6,
+            max_tokens=3800
         )
         return redirect(url_for("index", result=response.choices[0].text))
 
@@ -23,13 +24,6 @@ def index():
 
 
 def generate_prompt(animal):
-    return """Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: {}
-Names:""".format(
+    return """I want you to act as a travel guide. I will write you my location and you will suggest a place to visit near my location. In some cases, I will also give you the type of places I will visit. You will also suggest me places of similar type that are close to my first location. My first suggestion request is "{}".请用中文回复。""".format(
         animal.capitalize()
     )
